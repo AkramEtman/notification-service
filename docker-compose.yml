@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+
+  notification-service:
+    container_name: notification-service
+    image: notification-service:1.0.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - notification-service-mongo
+    environment:
+      - MONGODB_URI=mongodb://notification-service-mongo:27017/notification-service
+
+  notification-service-mongo:
+    image: mongo
+    container_name: notification-service-mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - notification-service-db:/data/db
+
+volumes:
+  notification-service-db:
+    name: notification-service-db
