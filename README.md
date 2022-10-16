@@ -63,7 +63,7 @@ $ npm run test:cov
 
 ## Basic Concepts
 
-* Notification Service is built based on H TODO 
+* Notification Service is using
   * MongoDb
   * Swagger for API Docs
 
