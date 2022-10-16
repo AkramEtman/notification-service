@@ -50,12 +50,12 @@ export class NotificationsTypegooseRepository
         {
           _id: leaveId,
           name: NotificationTypeEnum.LEAVE_BALANCE_REMINDER,
-          channels: [NotificationChannelTypeEnum.EMAIL],
+          channels: [NotificationChannelTypeEnum.UI],
         },
         {
           _id: payslipId,
           name: NotificationTypeEnum.MONTHLY_PAYSLIP,
-          channels: [NotificationChannelTypeEnum.UI],
+          channels: [NotificationChannelTypeEnum.EMAIL],
         },
       ])
       .then(() => {

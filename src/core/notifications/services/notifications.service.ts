@@ -75,12 +75,11 @@ export class NotificationsService {
         this.usersService.getUserDataForNotificationType(
           sendNotificationDto.notificationType,
         );
-      console.log('inside',notificationContext.send)
+
       await notificationContext.send(
         sendNotificationDto.notificationType,
         notificationPayload,
       );
-      console.log('EXit')
 
       const notification: CreateNotificationDto = {
         companyId: sendNotificationDto.companyId,

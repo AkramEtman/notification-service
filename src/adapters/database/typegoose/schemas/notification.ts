@@ -25,9 +25,6 @@ export class Notification {
 
   @Prop({ type: () => String, required: true })
   companyId: string;
-
-  @Prop({ type: () => Date })
-  createdAt: Date = new Date();
 }
 
 export const NotificationSchema = SchemaFactory.createForClass(Notification);

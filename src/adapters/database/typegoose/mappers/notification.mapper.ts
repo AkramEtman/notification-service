@@ -14,7 +14,6 @@ export class NotificationMapper {
       notification.channel,
       notification.userId,
       notification.companyId,
-      notification.createdAt,
     );
   }
 

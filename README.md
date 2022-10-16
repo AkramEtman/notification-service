@@ -23,27 +23,33 @@
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
+Notification Service is used to send notifications to user using different types and channels.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+# Architecture
+Notification Service is based on Hexagonal Architecture (Ports and adapters Architecture)
+This Architecture provides isolation for core logic business from technology which used in projects like Database.
+This Architecture helps us to foucs on business logic first and for testing business logic without thinking about techonlogy (Techonlogy Agnostic) 
 
-## Installation
+This service is seperated code into 2 base modules
+1. [Core module](src/core/core.module.ts)
+  * Ports
+  * [Notification Module](src/core/notifications/notifications.module.ts)
+  * [User Module (Mocked)](src/core/users/users.module.ts)
 
-```bash
-$ npm install
-```
+2. [Adapters module](src/adapters/adapters.module.ts)
+  * [Database Module](src/adapters/database/database.module.ts)
+    * [Typegooose Module](src/adapters/database/typegoose/typegooose.module.ts)
+  * [Scheduler](src/adapters/scheduler/)
+  * [Controller](src/adapters/controllers/)
 
 ## Running the app
 
-```bash
-# development
-$ npm run start
+1. Start the service 
+    ```bash
+    docker compose up --build
+    ```
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
+1. Open Swaggers UI at <http://localhost:3000/api>.
 
 ## Test
 
@@ -51,23 +57,21 @@ $ npm run start:prod
 # unit tests
 $ npm run test
 
-# e2e tests
-$ npm run test:e2e
-
 # test coverage
 $ npm run test:cov
 ```
 
-## Support
+## Basic Concepts
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+* Notification Service is built based on H TODO 
+  * MongoDb
+  * Swagger for API Docs
 
-## Stay in touch
+* Notification Module was based on Strategy pattern
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Add new Notification Channel Steps
 
-## License
+1. create new class and implements [NotificationChannel Interface](src/core/notifications/channels/notificationChannel.interface.ts)
+2. add class reference to [NotificationChannelModelEnum](src/core/notifications/notifications.contants.ts)
+3. add class name to [NotificationChannelTypeEnum](src/core/notifications/notifications.contants.ts)
 
-Nest is [MIT licensed](LICENSE).

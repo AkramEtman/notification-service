@@ -6,7 +6,6 @@ export class NotificationDomainModel {
   private readonly channel: NotificationChannelTypeEnum;
   private readonly userId: string;
   private readonly companyId: string;
-  private readonly createdAt: Date;
 
   constructor(
     id: string,
@@ -14,13 +13,11 @@ export class NotificationDomainModel {
     channel: NotificationChannelTypeEnum,
     userId: string,
     companyId: string,
-    createdAt?: Date,
   ) {
     this.id = id;
     this.typeId = typeId;
     this.channel = channel;
     this.userId = userId;
     this.companyId = companyId;
-    this.createdAt = createdAt;
   }
 }
